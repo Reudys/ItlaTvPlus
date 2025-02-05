@@ -1,35 +1,42 @@
-﻿@model IEnumerable<ITLATV.Models.Genero>
+﻿@model Dictionary<string, List<ITLATV.Models.Serie>>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Series por Género";
 }
 
-<h1>Index</h1>
+<h1>Series por Género</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+
+@foreach (var productora in Model)
+{
+    <h3>@productora.Key</h3> <!-- Título de la productora -->
+    @if (productora.Value.Any())
+    {
+        <div class="row">
+            @foreach (var serie in productora.Value)
+            {
+                <div class="card" style="width: 18rem; margin-right: 20px;">
+                    <img src="@serie.EnlaceImagen" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">@serie.Name</h4>
+                        <p class="card-text fw-bold">Generos:</p>
+                        <p class="card-text">@serie.GeneroPrimario</p>
+                        <p class="card-text">@serie.GeneroSecundario</p>
+                        <p class="card-text fw-bold">Productora:</p>
+                        <p class="card-text">@serie.Productora</p>
+                        <a asp-action="Edit" asp-route-id="@serie.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@serie.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@serie.Id">Delete</a>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No hay series disponibles para esta productora.</p>
+    }
 }
-    </tbody>
-</table>

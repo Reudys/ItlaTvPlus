@@ -20,9 +20,27 @@ namespace ITLATV.Controllers
         }
 
         // GET: Generoes
-        public async Task<IActionResult> Index()
+
+        public IActionResult Index()
         {
-            return View(await _context.Genero.ToListAsync());
+            // Obtenemos todos los géneros
+            var generos = _context.Genero.ToList();
+
+            // Creamos un diccionario para almacenar las series por género
+            var seriesPorGenero = new Dictionary<string, List<Serie>>();
+
+            foreach (var genero in generos)
+            {
+                // Filtramos las series que coinciden en el GeneroPrimario o GeneroSecundario
+                var series = _context.Serie
+                                     .Where(s => s.GeneroPrimario.Trim().ToLower() == genero.Name.Trim().ToLower() ||
+                                                 s.GeneroSecundario.Trim().ToLower() == genero.Name.Trim().ToLower())
+                                     .ToList();
+                seriesPorGenero.Add(genero.Name, series);
+            }
+
+            // Pasamos el diccionario a la vista
+            return View(seriesPorGenero);
         }
 
         // GET: Generoes/Details/5

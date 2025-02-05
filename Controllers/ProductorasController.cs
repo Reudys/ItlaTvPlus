@@ -20,9 +20,23 @@ namespace ITLATV.Controllers
         }
 
         // GET: Productoras
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Productora.ToListAsync());
+            // Obtenemos todas las productoras
+            var productoras = _context.Productora.ToList();
+
+            // Creamos un diccionario para almacenar las series por productora
+            var seriesPorProductora = new Dictionary<string, List<Serie>>();
+
+            foreach (var productora in productoras)
+            {
+                // Filtramos las series por productora
+                var series = _context.Serie.Where(s => s.Productora == productora.Name).ToList();
+                seriesPorProductora.Add(productora.Name, series);
+            }
+
+            // Pasamos el diccionario a la vista
+            return View(seriesPorProductora);
         }
 
         // GET: Productoras/Details/5
