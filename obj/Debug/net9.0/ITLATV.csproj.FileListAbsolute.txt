@@ -327,3 +327,4 @@ C:\Users\Rey\Desktop\MVC\Second Try\ITLATV\ITLATV\bin\Debug\net9.0\runtimes\win-
 C:\Users\Rey\Desktop\MVC\Second Try\ITLATV\ITLATV\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\Rey\Desktop\MVC\Second Try\ITLATV\ITLATV\obj\Debug\net9.0\ITLATV.csproj.AssemblyReference.cache
 C:\Users\Rey\Desktop\MVC\Second Try\ITLATV\ITLATV\obj\Debug\net9.0\ITLATV.csproj.Up2Date
+C:\Users\Rey\Desktop\MVC\Second Try\ITLATV\ITLATV\obj\Debug\net9.0\ITLATV.sourcelink.json
