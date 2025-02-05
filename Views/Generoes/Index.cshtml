@@ -10,26 +10,28 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-@foreach (var productora in Model)
+@foreach (var genero in Model)
 {
-    <h3>@productora.Key</h3> <!-- Título de la productora -->
-    @if (productora.Value.Any())
+    <h3>@genero.Key</h3> <!-- Título del género -->
+    @if (genero.Value.Any())
     {
         <div class="row">
-            @foreach (var serie in productora.Value)
+            @foreach (var serie in genero.Value)
             {
-                <div class="card" style="width: 18rem; margin-right: 20px;">
-                    <img src="@serie.EnlaceImagen" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-title">@serie.Name</h4>
-                        <p class="card-text fw-bold">Generos:</p>
-                        <p class="card-text">@serie.GeneroPrimario</p>
-                        <p class="card-text">@serie.GeneroSecundario</p>
-                        <p class="card-text fw-bold">Productora:</p>
-                        <p class="card-text">@serie.Productora</p>
-                        <a asp-action="Edit" asp-route-id="@serie.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@serie.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@serie.Id">Delete</a>
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card h-100" style="width: 100%;">
+                        <img src="@serie.EnlaceImagen" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">@serie.Name</h4>
+                            <p class="card-text fw-bold">Géneros:</p>
+                            <p class="card-text">@serie.GeneroPrimario</p>
+                            <p class="card-text">@serie.GeneroSecundario</p>
+                            <p class="card-text fw-bold">Productora:</p>
+                            <p class="card-text">@serie.Productora</p>
+                            <a asp-action="Edit" asp-route-id="@serie.Id" class="btn btn-primary">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@serie.Id" class="btn btn-info">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@serie.Id" class="btn btn-danger">Delete</a>
+                        </div>
                     </div>
                 </div>
             }
@@ -37,6 +39,7 @@
     }
     else
     {
-        <p>No hay series disponibles para esta productora.</p>
+        <p>No hay series disponibles para este género.</p>
     }
 }
+
