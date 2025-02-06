@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ITLATV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51c26be469dc3b10fcb56602ba73e7b2d0383e3d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b619ba8e40f7ada10670dd59a541b48e5b2abe8c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ITLATV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ITLATV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
