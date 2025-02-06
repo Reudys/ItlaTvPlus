@@ -22,20 +22,16 @@ namespace ITLATV.Controllers
         // GET: Productoras
         public IActionResult Index()
         {
-            // Obtenemos todas las productoras
             var productoras = _context.Productora.ToList();
 
-            // Creamos un diccionario para almacenar las series por productora
             var seriesPorProductora = new Dictionary<string, List<Serie>>();
 
             foreach (var productora in productoras)
             {
-                // Filtramos las series por productora
                 var series = _context.Serie.Where(s => s.Productora == productora.Name).ToList();
                 seriesPorProductora.Add(productora.Name, series);
             }
 
-            // Pasamos el diccionario a la vista
             return View(seriesPorProductora);
         }
 

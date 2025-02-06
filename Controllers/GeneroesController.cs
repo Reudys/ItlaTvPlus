@@ -23,15 +23,12 @@ namespace ITLATV.Controllers
 
         public IActionResult Index()
         {
-            // Obtenemos todos los géneros
             var generos = _context.Genero.ToList();
 
-            // Creamos un diccionario para almacenar las series por género
             var seriesPorGenero = new Dictionary<string, List<Serie>>();
 
             foreach (var genero in generos)
             {
-                // Filtramos las series que coinciden en el GeneroPrimario o GeneroSecundario
                 var series = _context.Serie
                                      .Where(s => s.GeneroPrimario.Trim().ToLower() == genero.Name.Trim().ToLower() ||
                                                  s.GeneroSecundario.Trim().ToLower() == genero.Name.Trim().ToLower())
@@ -39,7 +36,6 @@ namespace ITLATV.Controllers
                 seriesPorGenero.Add(genero.Name, series);
             }
 
-            // Pasamos el diccionario a la vista
             return View(seriesPorGenero);
         }
 
